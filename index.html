@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GOOD VIBES ENERGY | AIが、自分の電気代を稼ぎに来た。</title>
+  <meta name="description" content="AIエージェントが企業の電力コストを自動最適化。削減できた金額の30%のみいただく完全成果報酬型サービス。">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --green: #00FF87; --dark: #0A0E1A; --navy: #0D1B2A; --white: #F0F4F8; --gray: #8A9BB0; }
+    body { background: var(--dark); color: var(--white); font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.7; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5%; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .logo { font-size: 1.2rem; font-weight: 800; letter-spacing: 0.05em; }
+    .logo span { color: var(--green); }
+    .nav-cta { background: var(--green); color: var(--dark); padding: 0.6rem 1.4rem; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 0.9rem; }
+    .hero { text-align: center; padding: 8rem 5% 6rem; max-width: 900px; margin: 0 auto; }
+    .hero-badge { display: inline-block; background: rgba(0,255,135,0.12); color: var(--green); border: 1px solid rgba(0,255,135,0.3); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.85rem; margin-bottom: 2rem; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3.8rem); font-weight: 900; line-height: 1.2; margin-bottom: 1.5rem; }
+    .hero h1 em { color: var(--green); font-style: normal; }
+    .hero p { font-size: 1.15rem; color: var(--gray); max-width: 600px; margin: 0 auto 2.5rem; }
+    .hero-cta { display: inline-block; background: var(--green); color: var(--dark); padding: 1rem 2.5rem; border-radius: 6px; font-weight: 800; font-size: 1.1rem; text-decoration: none; }
+    .hero-note { font-size: 0.8rem; color: var(--gray); margin-top: 1rem; }
+    .stats { display: flex; justify-content: center; gap: 4rem; padding: 4rem 5%; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); flex-wrap: wrap; }
+    .stat { text-align: center; }
+    .stat-num { font-size: 2.5rem; font-weight: 900; color: var(--green); }
+    .stat-label { font-size: 0.85rem; color: var(--gray); margin-top: 0.3rem; }
+    .stat-note { font-size: 0.7rem; color: var(--gray); margin-top: 0.2rem; opacity: 0.6; }
+    .section { padding: 6rem 5%; max-width: 1000px; margin: 0 auto; }
+    .section-label { color: var(--green); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem; }
+    .section h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 800; margin-bottom: 2rem; }
+    .checklist { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+    .checklist li { background: var(--navy); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 1.2rem 1.4rem; display: flex; align-items: flex-start; gap: 0.8rem; }
+    .checklist li::before { content: "⚡"; flex-shrink: 0; }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .step { background: var(--navy); border: 1px solid rgba(0,255,135,0.15); border-radius: 12px; padding: 2rem; }
+    .step-num { color: var(--green); font-size: 2rem; font-weight: 900; opacity: 0.5; }
+    .step h3 { font-size: 1.1rem; margin: 0.8rem 0 0.6rem; }
+    .step p { font-size: 0.9rem; color: var(--gray); }
+    .pricing-card { background: var(--navy); border: 2px solid var(--green); border-radius: 16px; padding: 3rem; max-width: 600px; margin: 2rem auto 0; text-align: center; }
+    .pricing-items { list-style: none; margin: 2rem 0; }
+    .pricing-items li { padding: 0.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .pricing-items li:last-child { border-bottom: none; }
+    .highlight { color: var(--green); font-weight: 700; font-size: 1.3rem; }
+    .pricing-guarantee { background: rgba(0,255,135,0.08); border-radius: 8px; padding: 1rem; margin-top: 1.5rem; font-size: 0.9rem; }
+    .faq { max-width: 700px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.08); padding: 1.5rem 0; }
+    .faq-q { font-weight: 700; margin-bottom: 0.8rem; }
+    .faq-a { color: var(--gray); font-size: 0.95rem; }
+    .cta-bottom { text-align: center; padding: 8rem 5%; background: linear-gradient(180deg, var(--dark) 0%, var(--navy) 100%); }
+    .cta-bottom h2 { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 900; margin-bottom: 1.5rem; }
+    .volt-message { font-size: 1rem; color: var(--gray); margin: 0 auto 3rem; max-width: 500px; }
+    .volt-tag { color: var(--green); font-weight: 700; }
+    footer { text-align: center; padding: 2rem 5%; border-top: 1px solid rgba(255,255,255,0.06); color: var(--gray); font-size: 0.8rem; }
+    .disclaimer { font-size: 0.75rem; color: var(--gray); opacity: 0.6; max-width: 800px; margin: 1rem auto 0; text-align: left; line-height: 1.6; }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="logo">GOOD VIBES <span>ENERGY</span></div>
+  <a href="#shindan" class="nav-cta">無料診断を受ける</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">⚡ AI電力最適化サービス</div>
+  <h1>AIが、自分の電気代を<em>稼ぎに来た。</em></h1>
+  <p>AIエージェントVOLTが企業の電力ムダを自動検知・最適化。<br>削減できた金額の30%のみいただく、完全成果報酬型。</p>
+  <a href="#shindan" class="hero-cta">無料で電力診断を受ける →</a>
+  <p class="hero-note">初期費用・月額固定費ゼロ / 削減できなければ費用なし</p>
+</section>
+
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num">0<span style="font-size:1.2rem">円</span></div>
+    <div class="stat-label">初期費用・月額固定費</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">30<span style="font-size:1.2rem">%</span></div>
+    <div class="stat-label">削減額に対する成果報酬のみ</div>
+    <div class="stat-note">削減ゼロなら費用もゼロ</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">24h</div>
+    <div class="stat-label">AIが自動で最適化継続</div>
+    <div class="stat-note">眠らないAIエージェント</div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="section-label">Problem</div>
+  <h2>あなたの会社の電気代、<br>まだ高いままですか？</h2>
+  <ul class="checklist">
+    <li>電気代の内訳を正確に把握していない</li>
+    <li>省エネを検討したが、手が回っていない</li>
+    <li>コンサルに頼むと費用がかかる</li>
+    <li>設備投資なしで削減できると思っていない</li>
+    <li>電力会社を変えたが、それ以上の施策がない</li>
+    <li>担当者がいないので後回しになっている</li>
+  </ul>
+</section>
+
+<section class="section">
+  <div class="section-label">How it works</div>
+  <h2>VOLTが全部やります。<br>3ステップで最適化スタート。</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3>電力データを接続</h3>
+      <p>電気代明細をアップロードするだけ。スマートメーターとの連携も対応。設備工事は不要です。</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3>VOLTが24時間分析</h3>
+      <p>AIエージェントVOLTがデータを解析し、最適化の提案を生成。すべてお客様の確認を経て実行します。</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3>削減を確認・成果報酬のみ</h3>
+      <p>毎月の電気代と比較して削減額を確認。削減額の30%を成果報酬としてお支払いいただくだけです。</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-label">Pricing</div>
+  <h2>削減できなければ、<br>費用はかかりません。</h2>
+  <div class="pricing-card">
+    <h3>完全成果報酬モデル</h3>
+    <ul class="pricing-items">
+      <li>初期費用 <strong>¥0</strong></li>
+      <li>月額固定費 <strong>¥0</strong></li>
+      <li>成果報酬 <span class="highlight">削減額の 30%</span></li>
+    </ul>
+    <div class="pricing-guarantee">
+      💡 月間電気代300万円の場合、10%削減（月30万円）が実現できた場合、<br>
+      お客様の手元には月21万円が残ります。<br>
+      <small>※削減効果は業種・設備・使用環境により異なります。特定の削減率・削減額を保証するものではありません。</small>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-label">FAQ</div>
+  <h2>よくある質問</h2>
+  <div class="faq">
+    <div class="faq-item">
+      <div class="faq-q">本当に費用ゼロで始められますか？</div>
+      <div class="faq-a">はい。初期費用・月額固定費は一切かかりません。削減できた金額の30%のみをいただく成果報酬型です。削減額がゼロの場合、費用は発生しません。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">どの業種・規模が対象ですか？</div>
+      <div class="faq-a">月間電気代が100万円以上の法人が対象です。工場・冷凍倉庫・飲食チェーン・ホテルなどの電力消費が多い業種に特に適しています。ただし効果は個別の設備・運用状況によります。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">AIが間違えたらどうなりますか？</div>
+      <div class="faq-a">AIの最適化提案はすべてお客様の確認を経て実行されます。VOLTが無断で設定を変更することはありません。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">削減額の計算はどうなりますか？</div>
+      <div class="faq-a">導入前の直近12ヶ月平均をベースラインとして設定し、契約書に明記します。季節変動・業務変化による調整ルールも事前に合意のうえ契約します。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">設備工事は必要ですか？</div>
+      <div class="faq-a">不要です。既存の請求書データから分析を開始できます。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">データの安全性は大丈夫ですか？</div>
+      <div class="faq-a">お客様の電力データはAES-256暗号化のうえ国内AWSサーバーに保存します。第三者への提供・AI学習への利用は行いません。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">いつでも解約できますか？</div>
+      <div class="faq-a">はい。最低契約期間はありません。いつでも解約可能です。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">「AIが運営」って本当ですか？</div>
+      <div class="faq-a">分析・提案・レポートはAIエージェントVOLTが自動で行います。最終的な実行承認は常にお客様が行い、重要な判断には人間の監督者が関与します。</div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-bottom" id="shindan">
+  <h2>まず、無料診断から。</h2>
+  <p class="volt-message">
+    <span class="volt-tag">VOLT より：</span><br>
+    あなたの電気代を見れば、削減余地がわかります。<br>
+    5分の入力で、現状と可能性を数字でお伝えします。
+  </p>
+  <a href="https://forms.gle/placeholder" class="hero-cta">無料電力診断を申し込む →</a>
+  <p class="hero-note" style="margin-top:1rem">所要時間：約5分 / 費用：完全無料</p>
+</div>
+
+<footer>
+  <p>GOOD VIBES ENERGY｜株式会社GOOD VIBES AGENCY</p>
+  <div class="disclaimer">
+    ※本サービスにおける電力削減効果は、お客様の業種・設備の状態・使用環境・電力会社の料金体系・季節変動などにより異なります。特定の削減率・削減額を保証するものではありません。<br>
+    ※「AIが自動最適化」とは、AIエージェントによる分析・提案を指します。すべての実行はお客様の承認を経て行われます。<br>
+    ※本サービスは株式会社GOOD VIBES AGENCYが提供するコンサルティングサービスです。電気事業法上の小売電気事業には該当しません。
+  </div>
+  <p style="margin-top:1.5rem; opacity:0.5;">© 2026 GOOD VIBES AGENCY Inc. All rights reserved.</p>
+</footer>
+</body>
+</html>
