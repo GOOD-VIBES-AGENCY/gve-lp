@@ -1623,7 +1623,7 @@
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.05, rootMargin: '0px 0px 50px 0px' });
 
   els.forEach(el => observer.observe(el));
 
@@ -1631,6 +1631,13 @@
   document.querySelectorAll('#hero .fade-in').forEach((el, i) => {
     setTimeout(() => el.classList.add('visible'), i * 150);
   });
+
+  // Fallback: make all invisible elements visible after 2s
+  setTimeout(() => {
+    document.querySelectorAll('.fade-in:not(.visible)').forEach(el => {
+      el.classList.add('visible');
+    });
+  }, 2000);
 })();
 
 // ────────────────────────────────────────
